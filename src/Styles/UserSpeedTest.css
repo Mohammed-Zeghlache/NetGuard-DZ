@@ -1,0 +1,754 @@
+/* UserSpeedTest.css - Professional Speed Test Page */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Container */
+.speedtest-main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #030914 0%, #0a1628 100%);
+    padding: 30px 20px;
+    position: relative;
+}
+
+/* Animated Background */
+.speedtest-bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.speedtest-ball {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    animation: bgFloat 25s infinite ease-in-out;
+}
+
+.s-ball-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
+    top: -150px;
+    right: -150px;
+}
+
+.s-ball-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent);
+    bottom: -120px;
+    left: -120px;
+    animation-delay: -10s;
+}
+
+.s-ball-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -15s;
+}
+
+@keyframes bgFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* Main Card */
+.speedtest-main-card {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(10, 22, 44, 0.92);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Header */
+.speedtest-card-header {
+    padding: 24px 28px;
+    background: rgba(5, 12, 26, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.speedtest-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.speedtest-logo-box {
+    width: 55px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.speedtest-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.speedtest-main-title {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.speedtest-sub-title {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.speedtest-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.speedtest-isp-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.isp-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Server Selection */
+.speedtest-server-section {
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.server-label {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    margin-bottom: 12px;
+}
+
+.server-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.server-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px 18px;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.server-option:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: white;
+}
+
+.server-option.server-active {
+    background: rgba(37, 99, 235, 0.2);
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.server-logo-small {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+/* Gauge Section */
+.speedtest-gauge-section {
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.speed-gauge-container {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.speed-gauge {
+    width: 100%;
+    height: 100%;
+}
+
+.speed-gauge-center {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.gauge-speed-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.gauge-speed-unit {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-left: 4px;
+}
+
+.speedtest-start-btn {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 40px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.speedtest-start-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(37, 99, 235, 0.4);
+}
+
+.speedtest-start-btn.btn-testing {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-loading-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: btnSpin 0.8s linear infinite;
+}
+
+@keyframes btnSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Progress Section */
+.speedtest-progress-section {
+    padding: 0 28px 24px;
+}
+
+.progress-bar-container {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-phase-text {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+}
+
+.progress-percent-text {
+    color: #3b82f6;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+/* Results Section */
+.speedtest-results-section {
+    padding: 0 28px 24px;
+}
+
+.results-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 600;
+}
+
+.results-date {
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: normal;
+}
+
+.results-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.result-item {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.result-icon {
+    font-size: 1.8rem;
+    width: 50px;
+    text-align: center;
+}
+
+.result-info {
+    flex: 1;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.result-unit {
+    font-size: 0.7rem;
+    color: #64748b;
+    font-weight: normal;
+}
+
+.result-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+    width: 150px;
+}
+
+.result-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    border-radius: 2px;
+}
+
+.result-quality {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.result-quality.excellent {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.result-quality.good {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.result-quality.average {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.result-quality.poor {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.results-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+/* Stats Section */
+.speedtest-stats-section {
+    padding: 20px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.stats-header h3 {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.clear-history-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #ef4444;
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.clear-history-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.65rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.stat-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.stat-unit {
+    font-size: 0.6rem;
+    color: #64748b;
+}
+
+/* History Section */
+.speedtest-history-section {
+    padding: 20px 28px;
+}
+
+.history-header h3 {
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.history-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 10px;
+}
+
+.history-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.history-item:hover {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.history-date {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+.history-values {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.history-download, .history-upload, .history-ping {
+    font-size: 0.75rem;
+}
+
+.history-download {
+    color: #3b82f6;
+}
+
+.history-upload {
+    color: #10b981;
+}
+
+.history-ping {
+    color: #f59e0b;
+}
+
+.history-quality {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+}
+
+.history-quality.excellent {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.history-quality.good {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.history-quality.average {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.history-quality.poor {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.history-empty, .history-loading {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    opacity: 0.5;
+}
+
+.history-empty p {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.history-empty span {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+.small-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: smallSpin 0.8s linear infinite;
+    margin: 0 auto 8px;
+}
+
+@keyframes smallSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.speedtest-footer {
+    padding: 16px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(5, 12, 26, 0.4);
+}
+
+.footer-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: #64748b;
+    flex-wrap: wrap;
+}
+
+.footer-icon {
+    font-size: 0.75rem;
+}
+
+.footer-sep {
+    color: #334155;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .speedtest-main-card {
+        max-width: 100%;
+    }
+    
+    .speedtest-card-header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .speedtest-server-section,
+    .speedtest-gauge-section,
+    .speedtest-results-section,
+    .speedtest-stats-section,
+    .speedtest-history-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .result-bar {
+        width: 100%;
+    }
+    
+    .history-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .history-values {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .speedtest-logo-box {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .speedtest-main-title {
+        font-size: 1.1rem;
+    }
+    
+    .server-option {
+        font-size: 0.7rem;
+        padding: 8px 14px;
+    }
+    
+    .gauge-speed-value {
+        font-size: 1.5rem;
+    }
+    
+    .results-grid {
+        gap: 12px;
+    }
+    
+    .footer-info {
+        gap: 6px;
+    }
+}
