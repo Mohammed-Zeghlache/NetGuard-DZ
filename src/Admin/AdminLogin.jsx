@@ -34,7 +34,7 @@ const AdminLogin = () => {
     }
 
     try {
-      const response = await fetch('https://netguard-dz/api/admins/login', {
+      const response = await fetch('https://netguard-dz-back.onrender.com/api/admins/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
