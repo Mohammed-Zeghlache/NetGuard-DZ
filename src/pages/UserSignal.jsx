@@ -323,7 +323,7 @@ const UserSignal = () => {
         };
         
         try {
-            const response = await fetch('http://localhost:5000/api/signals', {
+            const response = await fetch('https://netguard-dz-back.onrender.com/api/signals', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
