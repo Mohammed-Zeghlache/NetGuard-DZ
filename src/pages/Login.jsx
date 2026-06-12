@@ -37,7 +37,6 @@ const Login = () => {
             return;
         }
 
-        // Phone validation (Algerian phone numbers)
         const phoneRegex = /^(05|06|07)[0-9]{8}$/;
         if (!phoneRegex.test(formData.phoneNumber)) {
             setError("Numéro de téléphone invalide. Format: 05XXXXXXXX, 06XXXXXXXX ou 07XXXXXXXX");
@@ -46,9 +45,8 @@ const Login = () => {
 
         setIsLoading(true);
 
-        // Simulate API call / authentication
         setTimeout(() => {
-            // Check if user exists in localStorage
+            
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             const existingUser = users.find(
                 u => u.email === formData.email && u.phoneNumber === formData.phoneNumber
