@@ -167,7 +167,7 @@ const Chatboot = () => {
         try {
             console.log("🚀 Calling AI API for:", userMessage.substring(0, 50));
             
-            const response = await fetch('/api/chat', {
+            const response = await fetch('https://netguard-dz-back.onrender.com/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
