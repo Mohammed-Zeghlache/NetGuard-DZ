@@ -1,5 +1,7 @@
 import React from "react";
-import "../styles/Home.css";
+// import "../styles/Home.css";
+import "../index.css";
+
 import { useNavigate } from "react-router-dom";
 import Algerie_telecom from "../images/Algerie_telecom.jpg";
 import Map from "../images/Map.jpg";
